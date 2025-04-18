@@ -19,23 +19,24 @@ const Dashboard = () => {
     };
 
     // Get only the type from cookies
-    const typeFromCookie = getCookie("type");
+    const typeFromCookie = localStorage.getItem("type");
     if (typeFromCookie) {
       setUserType(typeFromCookie);
     }
   }, []);
 
   const goToPostPage = () => {
-    console.log("Navigating to /post");
     window.location.href = "/post";
   };
 
   const goToEntree = () => {
-    console.log("Scan Entree");
+    window.location.href = "/post";
+    localStorage.setItem("type", "1");
   };
 
   const goToSortie = () => {
-    console.log("Scan Sortie");
+    window.location.href = "/post";
+    localStorage.setItem("type", "0");
   };
 
   return (

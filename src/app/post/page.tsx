@@ -100,6 +100,7 @@ const PostPage = () => {
 
       console.log("Sending to API:", { matricule, type });
 
+      const token = localStorage.getItem("token");
       // Use the same origin for the API request (not cross-origin)
       // This assumes your Next.js app is serving both the frontend and API
       const response = await fetch(
@@ -108,6 +109,7 @@ const PostPage = () => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({ matricule, type }),
           credentials: "include",

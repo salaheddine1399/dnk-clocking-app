@@ -59,11 +59,12 @@ export default function LoginForm() {
 
       const data = await response.json();
 
-      // Encrypt and store the 'type' in a cookie
-      //const secretKey = process.env.AUTH_SECRET; // Make sure to store this securely in your environment variables
-      //ts-ignore
-      const encryptedType = data.type.toString();
-      Cookies.set("type", encryptedType, { expires: 7 }); // Store for 7 days
+      if (response.status === 200) {
+        const { token, type } = data;
+        console.log(token, type);
+        localStorage.setItem("token", token);
+        localStorage.setItem("type", type);
+      }
 
       push("/dashboard");
     } catch (err) {

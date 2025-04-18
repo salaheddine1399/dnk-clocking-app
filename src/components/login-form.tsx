@@ -10,14 +10,13 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 import { Eye, EyeOff } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { encryptData } from "@/utils/cryptoUtils";
+
 import Cookies from "js-cookie";
 
 export default function LoginForm() {
@@ -151,7 +150,4 @@ export default function LoginForm() {
       </CardContent>
     </Card>
   );
-}
-function push(arg0: string) {
-  throw new Error("Function not implemented.");
 }

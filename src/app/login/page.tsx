@@ -1,7 +1,6 @@
 "use client";
 
 import LoginForm from "@/components/login-form";
-import { useEffect } from "react";
 
 const Login = () => {
   return (

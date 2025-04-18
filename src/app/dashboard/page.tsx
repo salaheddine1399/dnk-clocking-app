@@ -7,7 +7,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     // Simple function to get cookie value
-    const getCookie = (name: string | any[]) => {
+    const getCookie = (name: string) => {
       const cookies = document.cookie.split(";");
       for (let i = 0; i < cookies.length; i++) {
         const cookie = cookies[i].trim();

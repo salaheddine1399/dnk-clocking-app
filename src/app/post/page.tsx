@@ -99,7 +99,7 @@ const PostPage = () => {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
-          body: JSON.stringify({ matricule, type }),
+          body: JSON.stringify({ matricule, parsedType }),
           credentials: "include",
         }
       );

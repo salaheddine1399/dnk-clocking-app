@@ -79,20 +79,14 @@ const PostPage = () => {
       setApiStatus("submitting");
 
       // Get the type from cookies
-      const typeFromCookie = await getCookie("type");
-
-      if (!typeFromCookie || typeof typeFromCookie !== "string") {
-        setApiStatus("error");
-        setMessage("Error: Type not found or invalid in cookies");
-        console.error("Type not found or invalid in cookies");
-        return;
-      }
 
       // Convert type from string to integer
 
       const type = localStorage.getItem("type");
+      const parsedType = type ? parseInt(type, 10) : 0; // Default to 0 if type is null
+      console.log("Type from cookie:", parsedType);
 
-      console.log("Sending to API:", { matricule, type: Number(type) });
+      console.log("Sending to API:", { matricule, type: parsedType });
 
       const token = localStorage.getItem("token");
       // Use the same origin for the API request (not cross-origin)

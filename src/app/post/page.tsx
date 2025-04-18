@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { BrowserMultiFormatReader } from "@zxing/library";
 import { getCookie } from "cookies-next";
 import Image from "next/image"; // Import the Image component
+import { Home } from "lucide-react";
 
 const PostPage = () => {
   const [qrCodeData, setQrCodeData] = useState<string | null>(null);
@@ -149,8 +150,28 @@ const PostPage = () => {
     }
   };
 
+  // Logout function: Clear localStorage and redirect to login page
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("type");
+    localStorage.removeItem("type_s");
+    window.location.href = "/login"; // Redirect to the login page
+  };
+
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-50">
+      <div className="fixed top-0 w-full bg-white shadow-sm p-4 flex justify-between items-center">
+        <div className="flex items-center">
+          <Home className="w-5 h-5 text-blue-600 mr-2" />
+          <span className="font-semibold text-gray-800">Access System</span>
+        </div>
+        <Button
+          onClick={handleLogout}
+          className="text-sm text-white bg-gray-500 hover:bg-gray-600"
+        >
+          Logout
+        </Button>
+      </div>
       <div className="w-full max-w-md p-6 space-y-6 bg-white rounded-lg shadow-md">
         <h1 className="text-3xl font-semibold text-center text-gray-900">
           Scan QR Code

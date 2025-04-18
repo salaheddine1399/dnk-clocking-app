@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { Home, Shield, ArrowRight, LogIn, LogOut, QrCode } from "lucide-react";
 import Image from "next/image"; // Import the Next.js Image component
+import { Button } from "@/components/ui/button";
 
 const Dashboard = () => {
   const [userType, setUserType] = useState<string | null>(null);
@@ -40,6 +41,14 @@ const Dashboard = () => {
     localStorage.setItem("type_s", "0");
   };
 
+  // Logout function: Clear localStorage and redirect to login page
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("type");
+    localStorage.removeItem("type_s");
+    window.location.href = "/login"; // Redirect to the login page
+  };
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
       {/* Top Navigation Bar */}
@@ -48,6 +57,12 @@ const Dashboard = () => {
           <Home className="w-5 h-5 text-blue-600 mr-2" />
           <span className="font-semibold text-gray-800">Access System</span>
         </div>
+        <Button
+          onClick={handleLogout}
+          className="text-sm text-white bg-gray-500 hover:bg-gray-600"
+        >
+          Logout
+        </Button>
       </div>
 
       <div className="w-full max-w-lg p-6 bg-white rounded-lg shadow-lg mt-16 border border-gray-200">

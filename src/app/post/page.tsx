@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { BrowserMultiFormatReader } from "@zxing/library";
 import { getCookie } from "cookies-next";
+import Image from "next/image"; // Import the Image component
 
 const PostPage = () => {
   const [qrCodeData, setQrCodeData] = useState<string | null>(null);
@@ -78,7 +79,7 @@ const PostPage = () => {
       setIsSubmitting(true);
       setApiStatus("submitting");
 
-      const typeFromStorage = localStorage.getItem("type_something");
+      const typeFromStorage = localStorage.getItem("type_s");
       let parsedType = 0;
 
       if (typeFromStorage !== null) {
@@ -154,6 +155,15 @@ const PostPage = () => {
         <h1 className="text-3xl font-semibold text-center text-gray-900">
           Scan QR Code
         </h1>
+
+        <div className="flex justify-center">
+          <Image
+            src="/logo-djamiaya.png" // Path to your logo in the public folder
+            alt="Logo"
+            width={240} // Adjust width as needed
+            height={120} // Adjust height as needed
+          />
+        </div>
 
         {/* Display the video stream */}
         <div className="flex justify-center">

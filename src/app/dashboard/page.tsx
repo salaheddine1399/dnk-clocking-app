@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { Home, Shield, ArrowRight, LogIn, LogOut, QrCode } from "lucide-react";
+import Image from "next/image"; // Import the Next.js Image component
 
 const Dashboard = () => {
   const [userType, setUserType] = useState<string | null>(null);
@@ -52,11 +53,13 @@ const Dashboard = () => {
       <div className="w-full max-w-lg p-6 bg-white rounded-lg shadow-lg mt-16 border border-gray-200">
         <div className="pb-4">
           <div className="flex items-center justify-center mb-2">
-            <Shield className="w-12 h-12 text-blue-500" />
+            <Image
+              src="/logo-djamiaya.png" // Path to your logo in the public folder
+              alt="Logo"
+              width={240} // Adjust width as needed
+              height={120} // Adjust height as needed
+            />
           </div>
-          <h1 className="text-3xl font-bold text-center text-gray-800">
-            Dashboard
-          </h1>
         </div>
 
         <div className="space-y-4 pt-4">

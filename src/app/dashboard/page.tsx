@@ -31,12 +31,12 @@ const Dashboard = () => {
 
   const goToEntree = () => {
     window.location.href = "/post";
-    localStorage.setItem("type", "1");
+    localStorage.setItem("type_s", "1");
   };
 
   const goToSortie = () => {
     window.location.href = "/post";
-    localStorage.setItem("type", "0");
+    localStorage.setItem("type_s", "0");
   };
 
   return (

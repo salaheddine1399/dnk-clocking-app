@@ -78,14 +78,18 @@ const PostPage = () => {
       setIsSubmitting(true);
       setApiStatus("submitting");
 
-      // Get the type from cookies
+      const typeFromStorage = localStorage.getItem("type_something");
+      let parsedType = 0;
 
-      // Convert type from string to integer
-
-      const type = localStorage.getItem("type");
-      const parsedType = type ? parseInt(type, 10) : 0; // Default to 0 if type is null
-      console.log("Type from cookie:", parsedType);
-
+      if (typeFromStorage !== null) {
+        parsedType = parseInt(typeFromStorage, 10);
+        console.log("Using type_something:", parsedType);
+      } else {
+        // Fallback to type if type_something is not in localStorage
+        const typeFromCookie = localStorage.getItem("type");
+        parsedType = typeFromCookie ? parseInt(typeFromCookie, 10) : 0;
+        console.log("Using fallback type:", parsedType);
+      }
       console.log("Sending to API:", { matricule, type: parsedType });
 
       const token = localStorage.getItem("token");

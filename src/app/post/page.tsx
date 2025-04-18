@@ -89,16 +89,10 @@ const PostPage = () => {
       }
 
       // Convert type from string to integer
-      const type = parseInt(typeFromCookie, 10);
 
-      if (isNaN(type)) {
-        setApiStatus("error");
-        setMessage("Error: Invalid type value in cookies");
-        console.error("Invalid type value in cookies:", typeFromCookie);
-        return;
-      }
+      const type = localStorage.getItem("type");
 
-      console.log("Sending to API:", { matricule, type });
+      console.log("Sending to API:", { matricule, type: Number(type) });
 
       const token = localStorage.getItem("token");
       // Use the same origin for the API request (not cross-origin)
